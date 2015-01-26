@@ -1,0 +1,3 @@
+#!/bin/sh
+
+java -Dsolr.solr.home=cores -jar start.jar
