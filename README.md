@@ -1,5 +1,6 @@
-# drupal-solr
-Apache Solr 4.x distribution customized with Drupal search schema (works out of the box with search_api_solr)
+# Apache Solr customized for Drupal site
+
+This Apache Solr 4.x distribution has been customized to work out of the box with a Drupal 7 installation. Contains the schema distributed with the search_api_solr module
 
 # How to use it
 
