@@ -68,10 +68,11 @@
        the classpath, this is useful for including all jars in a
        directory.
     -->
-  <lib dir="${solr.contrib.dir:../../../contrib}/extraction/lib" />
-  <lib dir="${solr.contrib.dir:../../../contrib}/clustering/lib/" />
+  <lib dir="../../lib/extraction" regex=".*\.jar" />
+  <!-- lib dir="${solr.contrib.dir:../../../contrib}/extraction/lib" / -->
+  <!-- lib dir="${solr.contrib.dir:../../../contrib}/clustering/lib/" / -->
 
-  <!-- The velocity library has been known to crash Solr in some
+  <!-- The  velocity library has been known to crash Solr in some
        instances when deployed as a war file to Tomcat. Therefore all
        references have been removed from the default configuration.
        @see http://drupal.org/node/1612556
