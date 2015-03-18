@@ -1,0 +1,72 @@
+#!/bin/bash
+#
+# solr4         This shell script takes care of starting and stopping
+#               Jetty servlet container for Apache Solr 4 
+#
+#
+# chkconfig: 345 96 30
+# description: Manage Apache Solr 4 servlet container
+# processname: java
+
+# Source function library.
+. /etc/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+USER="php"
+STOP_PORT="8079"
+JAVA_OPTS="-Xmx1024m -DSTOP.PORT=$STOP_PORT -DSTOP.KEY=s3cr3t"
+SOLR_HOME="/var/local/cites/drupal-solr"
+JETTY_OPTS="-Dsolr.solr.home=$SOLR_HOME/cores -Djetty.logs=$SOLR_HOME/logs -Djetty.home=$SOLR_HOME -Djava.io.tmpdir=/tmp"
+JAVA=`which java`
+prog="Apache Solr 4"
+
+
+start() {
+   # Check that networking is up.
+   [ "$NETWORKING" = "no" ] && exit 1
+   
+   cd $SOLR_HOME
+   echo -n $"Starting $prog: "
+   su $USER -c "$JAVA $JAVA_OPTS $JETTY_OPTS -jar $SOLR_HOME/start.jar > /dev/null 2>&1 &"
+   RETVAL=$?
+   sleep 3
+   echo
+   [ $RETVAL -eq 0 ] && touch /var/lock/subsys/solr4
+   return $RETVAL
+}
+
+stop() {
+   echo -n $"Shutting down $prog: "
+   $JAVA $JAVA_OPTS -jar $SOLR_HOME/start.jar --stop > /dev/null 2>&1
+   RETVAL=$?
+   sleep 1
+   echo
+   [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/solr4
+   return $RETVAL
+}
+
+restart() {
+    stop
+    start
+}
+
+# See how we were called.
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart}"
+        RETVAL=3
+esac
+
+exit $RETVAL
+
