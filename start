@@ -1,0 +1,3 @@
+#!/bin/sh
+
+java -Xmx1024M -Djetty.port=8983 -Dsolr.solr.home=cores -jar start.jar
