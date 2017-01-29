@@ -3,7 +3,7 @@ Description=Apache Solr 4.10 Service
 
 [Service]
 User=php
-WorkingDirectory=/opt/solr/
+WorkingDirectory=/opt/drupal-solr/
 ExecStart=/bin/java -Dsolr.solr.home=cores -jar start.jar
 
 [Install]
