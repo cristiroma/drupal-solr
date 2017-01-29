@@ -4,7 +4,7 @@ Description=Apache Solr 4.10 Service
 [Service]
 User=php
 WorkingDirectory=/opt/drupal-solr/
-ExecStart=/bin/java -Dsolr.solr.home=cores -jar start.jar
+ExecStart=/bin/java -Dsolr.solr.home=cores -Xmx4096M -jar start.jar
 
 [Install]
 WantedBy=multi-user.target
