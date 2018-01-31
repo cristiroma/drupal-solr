@@ -1,4 +1,4 @@
-**This project has been deprecated in favor o https://github.com/cristiroma/local-development-stack**
+**This project has been deprecated in favor of https://github.com/cristiroma/local-development-stack**
 
 # Apache Solr customized for Drupal site
 
