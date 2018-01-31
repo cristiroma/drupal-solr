@@ -1,3 +1,5 @@
+**This project has been deprecated in favor o https://github.com/cristiroma/local-development-stack**
+
 # Apache Solr customized for Drupal site
 
 This Apache Solr 4.x distribution has been customized to work out of the box with a Drupal 7 installation. Contains the schema distributed with the search_api_solr module
